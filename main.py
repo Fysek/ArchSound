@@ -6,4 +6,9 @@ from sliderScanner import SliderScanner
 if __name__ == "__main__":
     sliderScanner = SliderScanner()
     while True:
-      sliderScanner.readValues()
+        try:
+            sliderScanner.readValues()
+            sliderScanner.evaluateValues()
+        except KeyboardInterrupt:
+            print('Interrupted')
+            sys.exit(0)
