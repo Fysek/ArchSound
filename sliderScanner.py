@@ -35,6 +35,7 @@ class SliderScanner():
         self.__move = 0
         self.__currentActiveChannel = 0 #Number from 1-11
         self.__lastReadingsActiveChannel = collections.deque([0,0,0,0,0,0,0,0,0,0], maxlen=10)
+        self.__blockedChannel = 0
         #MCP3008 #1
         self.__channels0[0] = AnalogIn(self.__mcp0, MCP.P0)
         self.__channels0[1] = AnalogIn(self.__mcp0, MCP.P1)
@@ -104,11 +105,15 @@ class SliderScanner():
         """
         # No channel assigned
         if self.__currentActiveChannel == UNACTIVE_CHANNEL:
-            for i in range(11):
-                if self.__values[i] > LOW_VALUE_BORDER:
-                    self.__currentActiveChannel = i+1 
-                    self.__lastReadingsActiveChannel.append(self.__values[i])                  
-    
+            if self.__blockedChannel != UNACTIVE_CHANNEL:# something is blocked
+                if self.__values[self.__blockedChannel-1] < LOW_VALUE_BORDER:
+                    self.__blockedChannel = UNACTIVE_CHANNEL #unblock channel
+            else:# scanning for a new channel only if nothing is blocked
+                for i in range(11):
+                    if self.__values[i] > LOW_VALUE_BORDER:
+                        self.__currentActiveChannel = i+1 
+                        self.__lastReadingsActiveChannel.append(self.__values[i])
+
         else: ## Channel already assigned
             currentReading = self.__values[self.__currentActiveChannel-1]
             self.__lastReadingsActiveChannel.append(currentReading)
@@ -116,6 +121,7 @@ class SliderScanner():
             if (currentReading > LOW_VALUE_BORDER): #active, channel stays, move depends, moving backwards cleans the
                 self.__move = self.__isMoving()
                 if self.__isMovingBackwards(): 
+                    self.__blockedChannel = self.__currentActiveChannel #block channel until in released
                     self.__currentActiveChannel = UNACTIVE_CHANNEL
             else: # not active
                 self.__move = False
@@ -126,6 +132,7 @@ class SliderScanner():
         self.__debug_message("Current active channel: " + str(self.__currentActiveChannel))
         self.__debug_message("Last readings: " + str(self.__lastReadingsActiveChannel))      
         self.__debug_message("Move: " + str(self.__move))
+        self.__debug_message("Blocked channel: " + str(self.__blockedChannel))
         ###
         
         return self.__currentActiveChannel, self.__move
