@@ -32,7 +32,7 @@ class SliderScanner():
         self.__channels0 = [0]*6
         self.__channels1 = [0]*5
         self.__values = [0]*11
-        self.__move = 0
+        self.__move = False
         self.__currentActiveChannel = 0 #Number from 1-11
         self.__lastReadingsActiveChannel = collections.deque([0,0,0,0,0,0,0,0,0,0], maxlen=10)
         self.__blockedChannel = 0

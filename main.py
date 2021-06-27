@@ -18,7 +18,8 @@ if __name__ == "__main__":
     while True:
         try:
             sliderScanner.readValues()
-            sliderScanner.evaluateValues()
+            zone, move = sliderScanner.evaluateValues()
+            soundPlayer.playSounds(zone, move)
         except KeyboardInterrupt:
             print('Interrupted')
             sys.exit(0)

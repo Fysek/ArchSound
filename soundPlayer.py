@@ -10,17 +10,46 @@ from pygame import mixer
 #pygame.mixer.Channel.get_busy
 
 DEBUG = 1
+UNACTIVE_CHANNEL = 0
 
 class SoundPlayer:
     def __init__(self):
         self.__mixer = mixer.init()
         self.__channel0 = mixer.Channel(0) #channel for space
         self.__channel1 = mixer.Channel(1) #channel for steps
+        self.__currentSpaceSample = ''
+        self.__currentStepsSample = ''
     
     def __debug_message(self, message):
         logging.info(message)
         if DEBUG:
             print(message)
     
+    def __setSamplePaths(self, zone):
+        for item in samplesConfig.SAMPLES_CONFIG:
+            if item['zone'] == str(zone):
+                 self.__currentSpaceSample = item['space']
+                 self.__currentStepsSample = item['steps']
+        
+        self.__debug_message("Current space sample: " + self.__currentSpaceSample)
+        self.__debug_message("Current steps sample: " + self.__currentStepsSample)
+
     def playSounds(self, zone, move):
-        pass  
+        self.__setSamplePaths(zone)
+        
+        if(zone != UNACTIVE_CHANNEL):
+            if self.__channel0.get.busy() == False:
+                self.__channel0.play(self.__currentSpaceSample)
+                self.__debug_message("Playing space sample")
+        else:
+            self.__channel0.stop()
+            self.__debug_message("Stopping channel 0")
+    
+        if(move == True):
+            if self.__channel1.get.busy() == False:
+                self.__channel1.play(self.__currentStepsSample) 
+                self.__debug_message("Playing steps sample")   
+        else:
+            self.__channel1.stop()
+            self.__debug_message("Stopping channel 1")
+        
