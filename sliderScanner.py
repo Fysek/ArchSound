@@ -3,6 +3,7 @@ import busio
 import digitalio
 import board
 import time
+import logging
 import collections
 import adafruit_mcp3xxx.mcp3008 as MCP
 from adafruit_mcp3xxx.analog_in import AnalogIn
@@ -50,6 +51,7 @@ class SliderScanner():
 
     
     def __debug_message(self, message):
+        logging.info(message)
         if DEBUG:
             print(message)
                
