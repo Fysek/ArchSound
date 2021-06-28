@@ -17,8 +17,8 @@ class SoundPlayer:
         self.__mixer = mixer.init()
         self.__channel0 = mixer.Channel(0) #channel for space
         self.__channel1 = mixer.Channel(1) #channel for steps
-        self.__currentSpaceSample = ''
-        self.__currentStepsSample = ''
+        self.__currentSpaceSample = mixer.Sound('samples/01_molenstraat/space.wav')
+        self.__currentStepsSample = mixer.Sound('samples/01_molenstraat/steps.wav')
     
     def __debug_message(self, message):
         logging.info(message)
@@ -28,17 +28,17 @@ class SoundPlayer:
     def __setSamplePaths(self, zone):
         for item in samplesConfig.SAMPLES_CONFIG:
             if item['zone'] == str(zone):
-                 self.__currentSpaceSample = item['space']
-                 self.__currentStepsSample = item['steps']
-        
-        self.__debug_message("Current space sample: " + self.__currentSpaceSample)
-        self.__debug_message("Current steps sample: " + self.__currentStepsSample)
+                 self.__currentSpaceSample = mixer.Sound(item['space'])
+                 self.__currentStepsSample = mixer.Sound(item['steps'])
+
+        self.__debug_message("Current space sample: " + str(self.__currentSpaceSample))
+        self.__debug_message("Current steps sample: " + str(self.__currentStepsSample))
 
     def playSounds(self, zone, move):
         self.__setSamplePaths(zone)
         
         if(zone != UNACTIVE_CHANNEL):
-            if self.__channel0.get.busy() == False:
+            if self.__channel0.get_busy() == False:
                 self.__channel0.play(self.__currentSpaceSample)
                 self.__debug_message("Playing space sample")
         else:
@@ -46,7 +46,7 @@ class SoundPlayer:
             self.__debug_message("Stopping channel 0")
     
         if(move == True):
-            if self.__channel1.get.busy() == False:
+            if self.__channel1.get_busy() == False:
                 self.__channel1.play(self.__currentStepsSample) 
                 self.__debug_message("Playing steps sample")   
         else:

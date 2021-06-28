@@ -14,7 +14,7 @@ from adafruit_mcp3xxx.analog_in import AnalogIn
 
 
 DEBUG = 1
-LOW_VALUE_BORDER = 64
+LOW_VALUE_BORDER = 320
 UNACTIVE_CHANNEL = 0
 MOVING_DIFF = 200
 MOVING_BACK_DIFF = 400
@@ -28,7 +28,7 @@ class SliderScanner():
         self.__mcp0 = MCP.MCP3008(self.__spi0, self.__cs0_0)
         self.__mcp1 = MCP.MCP3008(self.__spi1, self.__cs0_1)
         self.__timeInterval = readInterval
-        self.__timeInterval = 0.2
+        self.__timeInterval = 0.05
         self.__channels0 = [0]*6
         self.__channels1 = [0]*5
         self.__values = [0]*11
