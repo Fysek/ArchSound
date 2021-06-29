@@ -28,8 +28,11 @@ class SoundPlayer:
     def __setSamplePaths(self, zone):
         for item in samplesConfig.SAMPLES_CONFIG:
             if item['zone'] == str(zone):
-                 self.__currentSpaceSample = mixer.Sound(item['space'])
-                 self.__currentStepsSample = mixer.Sound(item['steps'])
+                self.__currentSpaceSample = mixer.Sound(item['space'])
+                if (item['steps'] != '') :
+                    self.__currentStepsSample = mixer.Sound(item['steps'])
+                else:
+                    self.__currentStepsSample = ''
 
         self.__debug_message("Current space sample: " + str(self.__currentSpaceSample))
         self.__debug_message("Current steps sample: " + str(self.__currentStepsSample))
@@ -47,8 +50,9 @@ class SoundPlayer:
     
         if(move == True):
             if self.__channel1.get_busy() == False:
-                self.__channel1.play(self.__currentStepsSample) 
-                self.__debug_message("Playing steps sample")   
+                if (self.__currentStepsSample != '') :
+                    self.__channel1.play(self.__currentStepsSample) 
+                    self.__debug_message("Playing steps sample")   
         else:
             self.__channel1.stop()
             self.__debug_message("Stopping channel 1")
