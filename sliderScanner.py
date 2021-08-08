@@ -9,12 +9,9 @@ import adafruit_mcp3xxx.mcp3008 as MCP
 from adafruit_mcp3xxx.analog_in import AnalogIn
 #Only SIX ports are used on each MCP3008
 #Read values 
-# TO DO:
-# - block channel after gooing backwards until it gos back to 0 
 
-
-DEBUG = 1
-LOW_VALUE_BORDER = 320
+DEBUG = 0
+LOW_VALUE_BORDER = 640
 UNACTIVE_CHANNEL = 0
 MOVING_DIFF = 150
 MOVING_BACK_DIFF = 400
@@ -28,7 +25,7 @@ class SliderScanner():
         self.__mcp0 = MCP.MCP3008(self.__spi0, self.__cs0_0)
         self.__mcp1 = MCP.MCP3008(self.__spi1, self.__cs0_1)
         self.__timeInterval = readInterval
-        self.__timeInterval = 0.2
+        self.__timeInterval = 0.1
         self.__channels0 = [0]*6
         self.__channels1 = [0]*5
         self.__values = [0]*11
@@ -52,7 +49,7 @@ class SliderScanner():
 
     
     def __debug_message(self, message):
-        logging.info(message)
+        #logging.info(message)
         if DEBUG:
             print(message)
                
@@ -131,8 +128,8 @@ class SliderScanner():
         ### DEBUG   
         self.__debug_message("Current active channel: " + str(self.__currentActiveChannel))
         self.__debug_message("Last readings: " + str(self.__lastReadingsActiveChannel))      
-        self.__debug_message("Move: " + str(self.__move))
-        self.__debug_message("Blocked channel: " + str(self.__blockedChannel))
+        #self.__debug_message("Move: " + str(self.__move))
+        #self.__debug_message("Blocked channel: " + str(self.__blockedChannel))
         ###
         
         return self.__currentActiveChannel, self.__move

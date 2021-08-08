@@ -11,8 +11,7 @@ def timeNow():
 
 
 if __name__ == "__main__":
-    # Start log file
-    logging.basicConfig(filename='/var/log/archsound/' + 'log_' + timeNow() + '.log', level=logging.DEBUG)
+    #logging.basicConfig(filename='/var/log/archsound/' + 'log_' + timeNow() + '.log', level=logging.DEBUG)
     sliderScanner = SliderScanner()
     soundPlayer = SoundPlayer()
     while True:

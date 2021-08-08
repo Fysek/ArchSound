@@ -1,15 +1,11 @@
 import threading
 import time
 import logging
+import os
 import samplesConfig
 from pygame import mixer
 
-#mixer.pause() when no channel, no move
-
-#pygame.mixer.Channel.play
-#pygame.mixer.Channel.get_busy
-
-DEBUG = 1
+DEBUG = 0
 UNACTIVE_CHANNEL = 0
 
 class SoundPlayer:
@@ -21,7 +17,7 @@ class SoundPlayer:
         self.__currentStepsSample = mixer.Sound('samples/01_molenstraat/steps.wav')
     
     def __debug_message(self, message):
-        logging.info(message)
+        #logging.info(message)
         if DEBUG:
             print(message)
     
@@ -34,8 +30,8 @@ class SoundPlayer:
                 else:
                     self.__currentStepsSample = ''
 
-        self.__debug_message("Current space sample: " + str(self.__currentSpaceSample))
-        self.__debug_message("Current steps sample: " + str(self.__currentStepsSample))
+        #self.__debug_message("Current space sample: " + str(self.__currentSpaceSample))
+        #self.__debug_message("Current steps sample: " + str(self.__currentStepsSample))
 
     def playSounds(self, zone, move):
         self.__setSamplePaths(zone)
