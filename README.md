@@ -30,7 +30,9 @@
 <!-- IDEA -->
 ### Idea
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+This is a sound player for architectural model and can be used in any other applciation as well. At the end it became a paort of the model for master thesis: _Sonic relation as a design tool_.
+
+The idea of a sound player is to imitate acoustics in the designed spaces. User can touch a membrane which is a potentiometer. This analog value is then converted by MCP3008 to digital and used in the application. Based on reading's location, a particular, characteristic to the area sound is played. Additionally, there is algorithm implemented which plays and stops a sound of footsteps if the user is moving on the membrane. Mind that only one direction of movement (forward) is supported.   
 
 <!-- SCHEMATIC -->
 ### Schematic
