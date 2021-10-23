@@ -1,4 +1,3 @@
-
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
@@ -16,7 +15,6 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -26,12 +24,8 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-
 
 <!-- IDEA -->
 ### Idea
@@ -56,33 +50,26 @@ This section
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+This chapter contains all information to easily and fast start the application. 
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+For the software point of view, only python packages are needed to run the application.
+* execute this command to install all required python packages
   ```sh
-  npm install npm@latest -g
+  python -m pip install -r requirements
   ```
 
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-
-
 ## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
+To run the application, simply execute the command below:
+```cmd
+python ./main.py 
+```
 
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
-
 
 <!-- CONTACT -->
 ## Contact
@@ -90,7 +77,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Mateusz Dyrdol - [@Mateusz Dyrdol](https://www.linkedin.com/in/mateusz-dyrdol/) - mateusz.dyrdol@gmail.com
 
 Project Link: [https://github.com/Fysek/ArchSound/](https://github.com/Fysek/ArchSound/)
-
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
@@ -101,6 +87,3 @@ Project Link: [https://github.com/Fysek/ArchSound/](https://github.com/Fysek/Arc
 * [Raspberry Pi Multiple SPIs](https://blog.stabel.family/raspberry-pi-4-multiple-spis-and-the-device-tree/)
 * [Raspberry Pi Pinout](https://pinout.xyz/pinout/spi)
 * [Ultraflat Potentiometer Membrane](https://www.vishay.com/sensors/list/product-32537/)
-
-
-
