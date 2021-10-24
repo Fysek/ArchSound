@@ -26,6 +26,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+<img src="https://github.com/Fysek/ArchSound/blob/master/images/8.end_result.jpg" width="600"/>
 
 <!-- IDEA -->
 ### Idea
@@ -47,7 +48,32 @@ This section
 <!-- RESULT -->
 ### Result
 
-This section 
+1. First prototype board
+<img src="https://github.com/Fysek/ArchSound/blob/master/images/1.first_prototype.jpg" width="600"/>
+
+2. Extending the board with pull-down resistors 
+<img src="https://github.com/Fysek/ArchSound/blob/master/images/3.making_board.jpg" width="600"/>
+
+3. Making a custom connector to connect with raspberry pi  
+<img src="https://github.com/Fysek/ArchSound/blob/master/images/4.making_connector.jpg" width="600"/>
+
+4. Full prototype with different types of membrane stripes
+<img src="https://github.com/Fysek/ArchSound/blob/master/images/5.prototype_stripes.jpg" width="600"/>
+
+5. Working on the model
+<img src="https://github.com/Fysek/ArchSound/blob/master/images/6.on_the_model.jpg" width="600"/>
+
+6. Connecting the board to the model
+<img src="https://github.com/Fysek/ArchSound/blob/master/images/7.board_on_the_model_2.jpg" width="600"/>
+
+7. Final result
+<img src="https://github.com/Fysek/ArchSound/blob/master/images/8.end_result.jpg" width="600"/>
+
+<img src="https://github.com/Fysek/ArchSound/blob/master/images/8.end_result_2.jpg" width="600"/>
+
+<img src="https://github.com/Fysek/ArchSound/blob/master/images/8.end_result_3.jpg" width="600"/>
+
+<img src="https://github.com/Fysek/ArchSound/blob/master/images/8.end_result_4.jpg" width="600"/>
 
 <!-- GETTING STARTED -->
 ## Getting Started
