@@ -43,7 +43,7 @@ This section is still in progress
 <!-- SOFTWARE -->
 ### Software
 
-This section is still in progress
+General idea of the system is pretty simple: read the values from the potentiometers and play the sound according to the configuration. 
 
   ```sh
   if __name__ == "__main__":
@@ -58,6 +58,8 @@ This section is still in progress
             print('Interrupted')
             sys.exit(0)
   ```
+
+To visualize 
 
 <img src="https://github.com/Fysek/ArchSound/blob/master/images/sw_diagram.png" width="600"/>
 
