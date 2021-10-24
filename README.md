@@ -38,12 +38,12 @@ The idea of a sound player is to imitate acoustics in the designed spaces. User 
 <!-- SCHEMATIC -->
 ### Schematic
 
-This section 
+This section is still in progress
 
 <!-- SOFTWARE -->
 ### Software
 
-This section 
+This section is still in progress
 
 <!-- RESULT -->
 ### Result
