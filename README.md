@@ -45,6 +45,22 @@ This section is still in progress
 
 This section is still in progress
 
+  ```sh
+  if __name__ == "__main__":
+    sliderScanner = SliderScanner()
+    soundPlayer = SoundPlayer()
+    while True:
+        try:
+            sliderScanner.readValues()
+            zone, move = sliderScanner.evaluateValues()
+            soundPlayer.playSounds(zone, move)
+        except KeyboardInterrupt:
+            print('Interrupted')
+            sys.exit(0)
+  ```
+
+<img src="https://github.com/Fysek/ArchSound/blob/master/images/sw_diagram.png" width="600"/>
+
 <!-- RESULT -->
 ### Result
 
