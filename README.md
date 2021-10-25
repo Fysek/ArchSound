@@ -31,9 +31,9 @@
 <!-- IDEA -->
 ### Idea
 
-This is a sound player for architectural model and can be used in any other application as well. At the end it became a paort of the model for master thesis: _Sonic relation as a design tool_.
+This is a sound player for architectural model and can be used in any other application as well. At the end it became a part of the model for master thesis: _Sonic relation as a design tool_.
 
-The idea of a sound player is to imitate acoustics in the designed spaces. User can touch a membrane which is a potentiometer. This analog value is then converted by MCP3008 to digital and used in the application. Based on reading's location, a particular, characteristic to the area sound is played. Additionally, there is algorithm implemented which plays and stops a sound of footsteps if the user is moving on the membrane. Mind that only one direction of movement (forward) is supported.   
+The idea of a sound player is to imitate acoustics in the designed spaces. User can touch a membrane which is a potentiometer. Produced analog value is then converted by MCP3008 to digital and used in the application. Based on reading's location, a particular, characteristic to the area sound is played. Additionally, there is algorithm implemented which plays and stops a sound of footsteps if the user is moving on the membrane. Mind that only one direction of movement (forward) is supported.   
 
 <!-- SCHEMATIC -->
 ### Schematic
@@ -43,7 +43,7 @@ Wiring between RPi and MCPs is shown on the picture below.
 
 <img src="https://github.com/Fysek/ArchSound/blob/master/images/archsound_wiring.png" width="800"/>
 
-Note that wiring is missing pull-down resistors. These resistors are not needed while regular potentioneters are connected to the MCP. Pull-down resistors are used with ultraflat membrane potentiometer because when the membrane is not pressed, the end of MCP is floating thus these resistors are needed.  
+Note that wiring is missing pull-down resistors. These resistors are not needed if regular potentioneters are connected to the MCP. Pull-down resistors are used with ultraflat membrane potentiometer because when the membrane is not pressed, the end of MCP is floating thus these resistors are needed.  
 
 <!-- SOFTWARE -->
 ### Software
