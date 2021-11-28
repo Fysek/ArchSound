@@ -49,14 +49,19 @@ class SliderScanner():
 
     
     def __debug_message(self, message):
-        #logging.info(message)
         if DEBUG:
+            logging.info(message)
             print(message)
                
     def __isMoving(self):
         """
         Deque stores new values at the end
         Comparing last and penultimate reading
+        
+        Returns
+        ----------
+        bool
+            if user is moving on the sensor
         """
         if(self.__lastReadingsActiveChannel[-1] - self.__lastReadingsActiveChannel[-2] > MOVING_DIFF):
             return True
@@ -66,6 +71,11 @@ class SliderScanner():
     def __isMovingBackwards(self):
         """
         If different between two last readings is bigger than MOVING_BACK_DIFF then user is going backwards
+        
+        Returns
+        ----------
+        bool
+            if user is moving on the sensor back       
         """
         if(self.__lastReadingsActiveChannel[-2] - self.__lastReadingsActiveChannel[-1] > MOVING_BACK_DIFF):
             return True
@@ -75,6 +85,11 @@ class SliderScanner():
     def __isActiveTenTimes(self):
         """
         Checks if the current channel is active for last ten measurements
+        
+        Returns
+        ----------
+        bool
+            if the channel was active for last 10 readings
         """
         if(sum(self.__lastReadingsActiveChannel) > (LOW_VALUE_BORDER * 10)):
             return True
@@ -82,6 +97,9 @@ class SliderScanner():
             return False            
                            
     def readValues(self):
+        """
+        Reads from MCP outputs and saves in self.__values list
+        """
         self.__debug_message("-----------------")
         
         #Scanning first MCP3008
@@ -91,14 +109,19 @@ class SliderScanner():
         for i in range(5): self.__values[i+6] = self.__channels1[i].value
         time.sleep(self.__timeInterval)
         
-        ### DEBUG  
         self.__debug_message('All channels: ' + str(self.__values[0:6]) + ' | ' + str(self.__values[6:11]))
-        ###
        
     def evaluateValues(self):
         """
-        Return active channel; 0 if nothing is acttive
-        Return move flag
+        Based on readings, evaluates which sound should be played
+        and if the user is moving on the sensor.
+        Returns values to use them in the SoundPlayer.py module
+        
+        Returns
+        ----------
+        tuple(str, bool)
+            str; active zone; 0 if nothing is active
+            bool; move flag
         """
         # No channel assigned
         if self.__currentActiveChannel == UNACTIVE_CHANNEL:
@@ -125,12 +148,10 @@ class SliderScanner():
                 if not self.__isActiveTenTimes():
                     self.__currentActiveChannel = UNACTIVE_CHANNEL
                  
-        ### DEBUG   
         self.__debug_message("Current active channel: " + str(self.__currentActiveChannel))
         self.__debug_message("Last readings: " + str(self.__lastReadingsActiveChannel))      
-        #self.__debug_message("Move: " + str(self.__move))
-        #self.__debug_message("Blocked channel: " + str(self.__blockedChannel))
-        ###
-        
-        return self.__currentActiveChannel, self.__move
+        self.__debug_message("Move: " + str(self.__move))
+        self.__debug_message("Blocked channel: " + str(self.__blockedChannel))
+    
+        return str(self.__currentActiveChannel), self.__move
         

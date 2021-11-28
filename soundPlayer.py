@@ -17,11 +17,19 @@ class SoundPlayer:
         self.__currentStepsSample = mixer.Sound('samples/01_molenstraat/steps.wav')
     
     def __debug_message(self, message):
-        #logging.info(message)
         if DEBUG:
+            logging.info(message)
             print(message)
     
     def __setSamplePaths(self, zone):
+        """
+        Sets self.__currentStepsSample based on zone number
+        
+        Parameters
+        ----------
+        zone : str
+            Number of the zone
+        """
         for item in samplesConfig.SAMPLES_CONFIG:
             if item['zone'] == str(zone):
                 self.__currentSpaceSample = mixer.Sound(item['space'])
@@ -30,10 +38,21 @@ class SoundPlayer:
                 else:
                     self.__currentStepsSample = ''
 
-        #self.__debug_message("Current space sample: " + str(self.__currentSpaceSample))
-        #self.__debug_message("Current steps sample: " + str(self.__currentStepsSample))
+        self.__debug_message("Current space sample: " + str(self.__currentSpaceSample))
+        self.__debug_message("Current steps sample: " + str(self.__currentStepsSample))
 
     def playSounds(self, zone, move):
+        """
+        Plays the sound based on zone and move
+        
+        Parameters
+        ----------
+        zone : str
+            Number of the zone
+        move : bool
+            If it is moving the move = True
+
+        """
         self.__setSamplePaths(zone)
         
         if(zone != UNACTIVE_CHANNEL):
