@@ -43,7 +43,9 @@ Wiring between RPi and MCPs is shown on the picture below.
 
 <img src="https://github.com/Fysek/ArchSound/blob/master/images/archsound_wiring.png" width="800"/>
 
-Note that wiring is missing pull-down resistors. These resistors are not needed if regular potentioneters are connected to the MCP. Pull-down resistors are used with ultraflat membrane potentiometer because when the membrane is not pressed, the end of MCP is floating thus these resistors are needed.  
+Note that wiring is missing pull-down resistors. These resistors are not needed if regular potentioneters are connected to the MCP. Pull-down resistors are used with ultraflat membrane potentiometer because when the membrane is not pressed, the end of MCP is floating thus these resistors are needed.
+
+To enable second SPI interface, please follow instruction on: [Raspberry Pi Pinout SPI](https://pinout.xyz/pinout/spi)
 
 <!-- SOFTWARE -->
 ### Software
