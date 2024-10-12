@@ -71,7 +71,7 @@ See the diagram below to visualize execution of functions over time.
 <img src="https://github.com/Fysek/ArchSound/blob/master/images/sw_diagram.png" width="600"/>
 
 <!-- RESULT -->
-### Result
+### Result (June 2021) 
 
 1. First prototype board
 <img src="https://github.com/Fysek/ArchSound/blob/master/images/1.first_prototype.jpg" width="600"/>
@@ -99,6 +99,8 @@ See the diagram below to visualize execution of functions over time.
 <img src="https://github.com/Fysek/ArchSound/blob/master/images/8.end_result_3.jpg" width="600"/>
 
 <img src="https://github.com/Fysek/ArchSound/blob/master/images/8.end_result_4.jpg" width="600"/>
+
+### Result (October 2024) 
 
 <!-- GETTING STARTED -->
 ## Getting Started
