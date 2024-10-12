@@ -8,7 +8,7 @@
         <li><a href="#idea">Idea</a></li>
         <li><a href="#schematic">Schematic</a></li>
         <li><a href="#software">Software</a></li>
-        <li><a href="#result">Result</a></li>
+        <li><a href="#result (June 2021)">Result </a></li>
       </ul>
     </li>
     <li>
@@ -100,7 +100,7 @@ See the diagram below to visualize execution of functions over time.
 
 <img src="https://github.com/Fysek/ArchSound/blob/master/images/8.end_result_4.jpg" width="600"/>
 
-### Result (October 2024) 
+### Update (October 2024) 
 
 <!-- GETTING STARTED -->
 ## Getting Started
