@@ -8,7 +8,7 @@
         <li><a href="#idea">Idea</a></li>
         <li><a href="#schematic">Schematic</a></li>
         <li><a href="#software">Software</a></li>
-        <li><a href="#result (June 2021)">Result </a></li>
+        <li><a href="#result">Result</a></li>
       </ul>
     </li>
     <li>
@@ -71,7 +71,7 @@ See the diagram below to visualize execution of functions over time.
 <img src="https://github.com/Fysek/ArchSound/blob/master/images/sw_diagram.png" width="600"/>
 
 <!-- RESULT -->
-### Result (June 2021) 
+### Result
 
 1. First prototype board
 <img src="https://github.com/Fysek/ArchSound/blob/master/images/1.first_prototype.jpg" width="600"/>
