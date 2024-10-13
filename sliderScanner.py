@@ -19,7 +19,7 @@ MOVING_BACK_DIFF = 400
 
 
 class SliderScanner:
-    def __init__(self, readInterval=1.0):
+    def __init__(self, readInterval=0.1):
         self.__spi0 = busio.SPI(clock=board.SCK, MISO=board.MISO, MOSI=board.MOSI)
         self.__spi1 = busio.SPI(clock=board.SCK_1, MISO=board.MISO_1, MOSI=board.MOSI_1)
         self.__cs0_0 = digitalio.DigitalInOut(board.D8)
@@ -27,15 +27,12 @@ class SliderScanner:
         self.__mcp0 = MCP.MCP3008(self.__spi0, self.__cs0_0)
         self.__mcp1 = MCP.MCP3008(self.__spi1, self.__cs0_1)
         self.__timeInterval = readInterval
-        self.__timeInterval = 0.1
         self.__channels0 = [0] * 6
         self.__channels1 = [0] * 5
         self.__values = [0] * 11
         self.__move = False
         self.__currentActiveChannel = 0  # Number from 1-11
-        self.__lastReadingsActiveChannel = collections.deque(
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], maxlen=10
-        )
+        self.__lastReadingsActiveChannel = collections.deque([0, 0, 0], maxlen=3)
         self.__blockedChannel = 0
         # MCP3008 #1
         self.__channels0[0] = AnalogIn(self.__mcp0, MCP.P0)
@@ -175,4 +172,4 @@ class SliderScanner:
         self.__debug_message("Move: " + str(self.__move))
         self.__debug_message("Blocked channel: " + str(self.__blockedChannel))
 
-        return str(self.__currentActiveChannel), self.__move
+        return self.__currentActiveChannel, self.__move
