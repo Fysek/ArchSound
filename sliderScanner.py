@@ -130,8 +130,8 @@ class SliderScanner:
 
         Returns
         ----------
-        tuple(str, bool)
-            str; active zone; 0 if nothing is active
+        tuple(int, bool)
+            int; active zone; 0 if nothing is active
             bool; move flag
         """
         # No channel assigned
