@@ -1,8 +1,9 @@
-import sys
 import logging
+import sys
+from datetime import datetime
+
 from sliderScanner import SliderScanner
 from soundPlayer import SoundPlayer
-from datetime import datetime
 
 
 def timeNow():

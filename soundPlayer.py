@@ -1,11 +1,10 @@
-import threading
-import time
 import logging
-import os
-import samplesConfig
+
 from pygame import mixer
 
-DEBUG = 1
+import samplesConfig
+
+DEBUG = 0
 UNACTIVE_CHANNEL = 0
 
 
@@ -28,7 +27,7 @@ class SoundPlayer:
 
         Parameters
         ----------
-        zone : str
+        zone : int
             Number of the zone
         """
         for item in samplesConfig.SAMPLES_CONFIG:
@@ -48,7 +47,7 @@ class SoundPlayer:
 
         Parameters
         ----------
-        zone : str
+        zone : int
             Number of the zone
         move : bool
             If it is moving the move = True
@@ -56,7 +55,7 @@ class SoundPlayer:
         """
         self.__setSamplePaths(zone)
 
-        if zone != UNACTIVE_CHANNEL:
+        if zone is not UNACTIVE_CHANNEL:
             if self.__channel0.get_busy() == False:
                 if self.__currentSpaceSample:
                     self.__channel0.play(self.__currentSpaceSample)
