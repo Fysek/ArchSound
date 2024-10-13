@@ -1,9 +1,12 @@
+import time
+
+import adafruit_mcp3xxx.mcp3008 as MCP
+import board
 import busio
 import digitalio
-import board
-import time
-import adafruit_mcp3xxx.mcp3008 as MCP
 from adafruit_mcp3xxx.analog_in import AnalogIn
+
+## This file is meant for testing the MCP3008 configuration without running the pygame instance
 
 spi0 = busio.SPI(clock=board.SCK, MISO=board.MISO, MOSI=board.MOSI)
 spi1 = busio.SPI(clock=board.SCK_1, MISO=board.MISO_1, MOSI=board.MOSI_1)

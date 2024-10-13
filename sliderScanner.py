@@ -1,17 +1,18 @@
 #!/usr/bin/python3
+import collections
+import logging
+import time
+
+import adafruit_mcp3xxx.mcp3008 as MCP
+import board
 import busio
 import digitalio
-import board
-import time
-import logging
-import collections
-import adafruit_mcp3xxx.mcp3008 as MCP
 from adafruit_mcp3xxx.analog_in import AnalogIn
 
 # Only SIX ports are used on each MCP3008
 # Read values
 
-DEBUG = 1
+DEBUG = 0
 LOW_VALUE_BORDER = 640
 UNACTIVE_CHANNEL = 0
 MOVING_DIFF = 150
@@ -118,10 +119,7 @@ class SliderScanner:
         time.sleep(self.__timeInterval)
 
         self.__debug_message(
-            "All channels: "
-            + str(self.__values[0:6])
-            + " | "
-            + str(self.__values[6:11])
+            f"All channels: {str(self.__values[0:6])} | {str(self.__values[6:11])}"
         )
 
     def evaluateValues(self):

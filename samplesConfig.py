@@ -1,6 +1,4 @@
-import os
-
-SAMPLES_DIR = "/home/fysek/ArchSound/samples/"
+SAMPLES_DIR = "/home/pi/ArchSound/samples/"
 
 SAMPLES_CONFIG = [
     {
