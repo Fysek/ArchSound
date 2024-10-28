@@ -1,4 +1,7 @@
 import logging
+import os
+
+os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "hide"
 
 from pygame import mixer
 
@@ -19,7 +22,7 @@ class SoundPlayer:
     def __debug_message(self, message):
         if DEBUG:
             logging.info(message)
-            print(message)
+            # print(message)
 
     def __setSamplePaths(self, zone):
         """

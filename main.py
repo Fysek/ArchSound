@@ -14,16 +14,17 @@ def timeNow():
 
 if __name__ == "__main__":
     logging.basicConfig(
-        filename="log/" + "log_" + timeNow() + ".log",
+        filename="/home/fysek/ArchSound/log/" + "log_" + timeNow() + ".log",
         level=logging.DEBUG,
     )
     sliderScanner = SliderScanner()
     soundPlayer = SoundPlayer()
+    logging.info("Succesfully initialized the device")
     while True:
         try:
             sliderScanner.readValues()
             zone, move = sliderScanner.evaluateValues()
             soundPlayer.playSounds(zone, move)
         except KeyboardInterrupt:
-            print("Interrupted")
+            logging.info("Interrupted")
             sys.exit(0)

@@ -12,11 +12,17 @@ from adafruit_mcp3xxx.analog_in import AnalogIn
 # Only SIX ports are used on each MCP3008
 # Read values
 
-DEBUG = 0
+DEBUG = 1
 LOW_VALUE_BORDER = 640
 UNACTIVE_CHANNEL = 0
 MOVING_DIFF = 150
 MOVING_BACK_DIFF = 400
+
+
+def timeNow():
+    now = datetime.now()
+    current_time = "[" + now.strftime("%Y:%m:%d.%H:%M:%S") + "]"
+    return current_time
 
 
 class SliderScanner:
@@ -33,7 +39,7 @@ class SliderScanner:
         self.__values = [0] * 11
         self.__move = False
         self.__currentActiveChannel = 0  # Number from 1-11
-        self.__lastReadingsActiveChannel = collections.deque([0, 0, 0], maxlen=3)
+        self.__lastReadingsActiveChannel = collections.deque([0, 0, 0, 0, 0], maxlen=5)
         self.__blockedChannel = 0
         # MCP3008 #1
         self.__channels0[0] = AnalogIn(self.__mcp0, MCP.P0)
@@ -51,8 +57,8 @@ class SliderScanner:
 
     def __debug_message(self, message):
         if DEBUG:
-            logging.info(message)
-            print(message)
+            logging.info(timeNow() + ";" + message)
+            # print(message)
 
     def __isMoving(self):
         """
@@ -107,7 +113,7 @@ class SliderScanner:
         """
         Reads from MCP outputs and saves in self.__values list
         """
-        self.__debug_message("-----------------")
+        # self.__debug_message("-----------------")
 
         # Scanning first MCP3008
         for i in range(6):
@@ -117,10 +123,10 @@ class SliderScanner:
         for i in range(5):
             self.__values[i + 6] = self.__channels1[i].value
         time.sleep(self.__timeInterval)
-
-        self.__debug_message(
-            f"All channels: {str(self.__values[0:6])} | {str(self.__values[6:11])}"
-        )
+        if any(self.__values):
+            self.__debug_message(
+                f"All channels: {str(self.__values[0:6])} | {str(self.__values[6:11])}"
+            )
 
     def evaluateValues(self):
         """
@@ -163,11 +169,11 @@ class SliderScanner:
                 if not self.__isActiveTenTimes():
                     self.__currentActiveChannel = UNACTIVE_CHANNEL
 
-        self.__debug_message(
-            "Current active channel: " + str(self.__currentActiveChannel)
-        )
-        self.__debug_message("Last readings: " + str(self.__lastReadingsActiveChannel))
-        self.__debug_message("Move: " + str(self.__move))
-        self.__debug_message("Blocked channel: " + str(self.__blockedChannel))
+        # self.__debug_message(
+        #    "Current active channel: " + str(self.__currentActiveChannel)
+        # )
+        # self.__debug_message("Last readings: " + str(self.__lastReadingsActiveChannel))
+        # self.__debug_message("Move: " + str(self.__move))
+        # self.__debug_message("Blocked channel: " + str(self.__blockedChannel))
 
         return self.__currentActiveChannel, self.__move
